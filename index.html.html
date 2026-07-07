@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Touch of Taste - Digital Menu</title>
+    <meta name="description" content="Explore our rich variety of Continental, Italian, Mexican, Mongolian, Lebanese, Indian and Chinese delicacies. Fast Home Delivery in Janak Puri.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#D4AF37',
+                            dark: '#111827',
+                            light: '#F9FAFB'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass {
+            background: rgba(17, 24, 39, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-brand-light dark:bg-brand-dark text-gray-800 dark:text-gray-100 font-sans transition-colors duration-300">
+
+    <header class="sticky top-0 z-50 glass border-b border-gray-200 dark:border-gray-800 shadow-sm">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-black flex items-center justify-center rounded-full border border-brand-gold">
+                    <span class="text-brand-gold font-bold text-xs tracking-tighter">ToT</span>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-none tracking-tight">Touch of Taste</h1>
+                    <span class="text-xs text-brand-gold font-medium">Take Away & Catering</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-2">
+                <button onclick="toggleQRModal()" class="p-2 text-gray-500 hover:text-brand-gold focus:outline-none" title="View Menu QR">
+                    <i class="fa-solid fa-qrcode text-xl"></i>
+                </button>
+                <button onclick="toggleDarkMode()" class="p-2 text-gray-500 hover:text-brand-gold focus:outline-none">
+                    <i id="theme-icon" class="fa-solid fa-moon text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 pb-3">
+            <div class="relative mb-3">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                <input type="text" id="search-bar" oninput="filterMenu()" placeholder="Search dishes (e.g., Paneer, Chilli, Chowmein...)" 
+                       class="w-full pl-10 pr-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-brand-gold transition shadow-inner">
+            </div>
+
+            <div id="category-tabs" class="flex space-x-2 overflow-x-auto no-scrollbar py-1 text-sm font-medium">
+                </div>
+        </div>
+    </header>
+
+    <section class="relative bg-zinc-900 text-white py-12 px-4 text-center overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1200&q=80');"></div>
+        <div class="relative max-w-2xl mx-auto z-10">
+            <span class="inline-block bg-brand-gold/20 text-brand-gold text-xs px-3 py-1 rounded-full uppercase tracking-widest font-semibold mb-2 border border-brand-gold/30">Specialist in Live Cooking</span>
+            <p class="text-xs text-gray-300 max-w-md mx-auto mb-6">Continental, Italian, Mexican, Mongolian, Lebanese, Indian and Chinese</p>
+            
+            <div class="flex justify-center gap-3 text-sm">
+                <a href="tel:9810301182" class="bg-brand-gold text-black font-semibold px-4 py-2 rounded-full flex items-center shadow-lg transform active:scale-95 transition">
+                    <i class="fa-solid fa-phone mr-2"></i> Call Now
+                </a>
+                <a href="https://wa.me/919810301182" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-full flex items-center shadow-lg transform active:scale-95 transition">
+                    <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        <div id="menu-container" class="space-y-10">
+            </div>
+    </main>
+
+    <footer class="bg-white dark:bg-zinc-900 border-t border-gray-200 dark:border-gray-800 text-xs py-6 text-center text-gray-500 dark:text-gray-400 px-4">
+        <div class="max-w-md mx-auto space-y-2">
+            <p class="font-semibold text-gray-700 dark:text-gray-300 text-sm">Touch of Taste Take Away</p>
+            <p><i class="fa-solid fa-location-dot text-brand-gold mr-1"></i> Shop No 1, WZ-154, ME 9, Lane No 6, Virender Nagar, Janak Puri, New Delhi 110058</p>
+            <p><i class="fa-solid fa-truck text-gray-400 mr-1"></i> Free Home Delivery on Minimum Order of ₹200 (within 1 km)</p>
+            <div class="pt-4 border-t border-gray-200 dark:border-gray-800 text-[10px] text-gray-400">
+                &copy; 2026 Touch of Taste. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <div id="qr-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4" onclick="toggleQRModal()">
+        <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl max-w-sm w-full text-center space-y-4" onclick="event.stopPropagation()">
+            <h3 class="font-bold text-lg">Digital Menu QR Code</h3>
+            <p class="text-xs text-gray-400">Share or display this table tent code on counters for instant phone scanning access.</p>
+            <div class="flex justify-center p-3 bg-white rounded-xl shadow-inner max-w-max mx-auto" id="qrcode-canvas"></div>
+            <button onclick="toggleQRModal()" class="w-full bg-gray-100 dark:bg-gray-800 text-sm font-semibold py-2 rounded-xl transition hover:bg-gray-200">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const menuData = {
+            "Vegetarian Snacks": [
+                { "name": "Veg. Manchurian Dry", "prices": { "half": 70, "full": 100, "large": 150 }, "type": "veg" },
+                { "name": "Chilli Paneer Dry", "prices": { "half": 90, "full": 150, "large": 200 }, "type": "veg" },
+                { "name": "Spicy Garlic Chilli Potato", "prices": { "half": 50, "full": 80 }, "type": "veg" },
+                { "name": "Spicy Chilli Garlic Honey Potato", "prices": { "half": 60, "full": 100 }, "type": "veg" },
+                { "name": "Singapuri Chilli Cauliflower Deluxe", "prices": { "full": 100 }, "type": "veg" },
+                { "name": "Paneer Manchurian Dry", "prices": { "half": 90, "full": 150, "large": 200 }, "type": "veg" },
+                { "name": "Veg. Spring Roll", "prices": { "half": 25, "full": 50 }, "type": "veg" },
+                { "name": "Chilli Garlic Soya Chap (Dry)", "prices": { "half": 100, "full": 150 }, "type": "veg" },
+                { "name": "Crispy Honey Chap", "prices": { "half": 100, "full": 150 }, "type": "veg" }
+            ],
+            "Non-Veg. Snacks": [
+                { "name": "Chilli Chicken Dry", "prices": { "half": 100, "large": 200 }, "type": "non-veg" },
+                { "name": "Chicken Manchurian Dry", "prices": { "half": 100, "large": 200 }, "type": "non-veg" },
+                { "name": "Lemon Chicken Dry", "prices": { "half": 100, "large": 200 }, "type": "non-veg" },
+                { "name": "Chicken Black Pepper Dry", "prices": { "half": 110, "large": 220 }, "type": "non-veg" },
+                { "name": "Chicken Hongkong Dry", "prices": { "full": 160, "large": 210 }, "type": "non-veg" },
+                { "name": "Crispy Honey Chicken Dry", "prices": { "full": 170, "large": 230 }, "type": "non-veg" },
+                { "name": "Chicken Spring Roll (2 pc.)", "prices": { "full": 80 }, "type": "non-veg" },
+                { "name": "Chicken Lollipop (10 pc.)", "prices": { "full": 200 }, "type": "non-veg" },
+                { "name": "Crispy Spicy Chicken Finger", "prices": { "full": 210 }, "type": "non-veg" },
+                { "name": "Crambed Fried Chicken with Garlic Sauce", "prices": { "full": 130, "large": 250 }, "type": "non-veg" }
+            ],
+            "Italian Continental Food": [
+                { "name": "Veg. Burger", "prices": { "full": 40 }, "type": "veg" },
+                { "name": "Paneer Burger", "prices": { "full": 50 }, "type": "veg" },
+                { "name": "Cheese Burger", "prices": { "full": 40 }, "type": "veg" },
+                { "name": "Chicken Burger", "prices": { "full": 60 }, "type": "non-veg" },
+                { "name": "Chicken Cheese Burger", "prices": { "full": 70 }, "type": "non-veg" },
+                { "name": "French Fry", "prices": { "half": 30, "full": 50 }, "type": "veg" }
+            ],
+            "Veg. Noodles": [
+                { "name": "Veg. Noodles", "prices": { "half": 40, "full": 70 }, "type": "veg" },
+                { "name": "Veg. Singapuri Noodles", "prices": { "half": 60, "full": 100 }, "type": "veg" },
+                { "name": "Veg. Chilli Garlic Noodles", "prices": { "half": 40, "full": 80 }, "type": "veg" },
+                { "name": "Veg. Hakka Noodles", "prices": { "half": 60, "full": 100 }, "type": "veg" },
+                { "name": "Veg. Paneer Noodles", "prices": { "half": 60, "full": 100 }, "type": "veg" },
+                { "name": "Schezwan Garlic Noodles", "prices": { "full": 90 }, "type": "veg" }
+            ],
+            "Non-Veg. Noodles": [
+                { "name": "Chicken Noodles", "prices": { "half": 70, "full": 110 }, "type": "non-veg" },
+                { "name": "Chicken Singapuri Noodles", "prices": { "half": 80, "full": 120 }, "type": "non-veg" },
+                { "name": "Chicken Garlic Noodles", "prices": { "half": 80, "full": 110 }, "type": "non-veg" },
+                { "name": "Chicken Hakka Noodles", "prices": { "half": 80, "full": 120 }, "type": "non-veg" },
+                { "name": "Special Chilli Chicken Egg Garlic Noodles", "prices": { "full": 130 }, "type": "non-veg" },
+                { "name": "Chicken Egg Noodles", "prices": { "half": 80, "full": 120 }, "type": "non-veg" },
+                { "name": "Egg Noodles (Extra egg + 10)", "prices": { "half": 60, "full": 90 }, "type": "non-veg" },
+                { "name": "Schezwan Garlic Chicken Noodles", "prices": { "half": 80, "full": 120 }, "type": "non-veg" }
+            ],
+            "Veg. Rice": [
+                { "name": "Veg. Fried Rice", "prices": { "half": 40, "full": 70 }, "type": "veg" },
+                { "name": "Veg. Steam Rice", "prices": { "full": 60 }, "type": "veg" },
+                { "name": "Veg. Singapuri Rice", "prices": { "half": 60, "full": 100 }, "type": "veg" },
+                { "name": "Veg. Chilli Garlic Fried Rice", "prices": { "half": 40, "full": 80 }, "type": "veg" },
+                { "name": "Paneer Veg. Fried Rice", "prices": { "half": 70, "full": 110 }, "type": "veg" },
+                { "name": "Schezwan Garlic Rice", "prices": { "full": 90 }, "type": "veg" }
+            ],
+            "Non-Veg. Rice": [
+                { "name": "Chicken Fried Rice", "prices": { "half": 70, "full": 110 }, "type": "non-veg" },
+                { "name": "Chicken Chilli Garlic Fried Rice", "prices": { "half": 70, "full": 110 }, "type": "non-veg" },
+                { "name": "Special Chicken Garlic Egg Fried Rice", "prices": { "half": 80, "full": 130 }, "type": "non-veg" },
+                { "name": "Schezwan Garlic Chicken Rice", "prices": { "half": 70, "full": 120 }, "type": "non-veg" },
+                { "name": "Egg Fried Rice", "prices": { "half": 60, "full": 90 }, "type": "non-veg" }
+            ],
+            "Rolls & Wraps": [
+                { "name": "Veg. Paneer Roll", "prices": { "full": 90 }, "type": "veg" },
+                { "name": "Veg. Chaap Roll", "prices": { "full": 90 }, "type": "veg" },
+                { "name": "Chilly Chicken Roll", "prices": { "full": 110 }, "type": "non-veg" },
+                { "name": "Chicken Egg Roll", "prices": { "full": 110 }, "type": "non-veg" },
+                { "name": "Chicken Seekh Roll", "prices": { "full": 120 }, "type": "non-veg" },
+                { "name": "Crispy Chaap", "prices": { "full": 120 }, "type": "veg" },
+                { "name": "Veg. Paneer Kathi Roll", "prices": { "full": 80 }, "type": "veg" },
+                { "name": "Chicken Egg Kathi Roll", "prices": { "full": 100 }, "type": "non-veg" }
+            ],
+            "Veg. Soup": [
+                { "name": "Veg. Clear Soup", "prices": { "full": 70 }, "type": "veg" },
+                { "name": "Veg. Hot-n-Sour Soup", "prices": { "full": 70 }, "type": "veg" },
+                { "name": "Veg. Sweet Corn Soup", "prices": { "full": 70 }, "type": "veg" },
+                { "name": "Veg. Talumein Soup", "prices": { "full": 70 }, "type": "veg" },
+                { "name": "Veg. Lemon Coriander Soup", "prices": { "full": 70 }, "type": "veg" },
+                { "name": "Veg. Manchow Soup", "prices": { "full": 70 }, "type": "veg" },
+                { "name": "Veg Cream of Tomato Soup", "prices": { "full": 70 }, "type": "veg" }
+            ],
+            "Non-Veg. Soup": [
+                { "name": "Chicken Manchow Soup", "prices": { "full": 90 }, "type": "non-veg" },
+                { "name": "Chicken Hot & Sour Soup", "prices": { "full": 90 }, "type": "non-veg" },
+                { "name": "Chicken Talumein Soup", "prices": { "full": 90 }, "type": "non-veg" },
+                { "name": "Chicken Clear Soup", "prices": { "full": 90 }, "type": "non-veg" },
+                { "name": "Chicken Thukpa Soup", "prices": { "full": 100 }, "type": "non-veg" },
+                { "name": "Cream of Chicken", "prices": { "full": 100 }, "type": "non-veg" },
+                { "name": "Chicken Lemon Coriander Soup", "prices": { "full": 100 }, "type": "non-veg" }
+            ],
+            "Veg. Main Course": [
+                { "name": "Veg. Manchurian Gravy", "prices": { "half": 70, "full": 100, "large": 150 }, "type": "veg" },
+                { "name": "Veg. Paneer Manchurian Gravy", "prices": { "half": 90, "full": 150, "large": 200 }, "type": "veg" },
+                { "name": "Veg. Chilli Paneer Gravy", "prices": { "half": 90, "full": 150, "large": 200 }, "type": "veg" },
+                { "name": "Mix Veg. Hot Garlic Sauce", "prices": { "half": 120, "full": 160 }, "type": "veg" },
+                { "name": "Garlic Soya Chilli Chap", "prices": { "half": 100, "full": 150 }, "type": "veg" },
+                { "name": "Veg. Sweet & Soar", "prices": { "half": 100, "full": 160 }, "type": "veg" }
+            ],
+            "Non-Veg. Main Course": [
+                { "name": "Chicken Chilli Gravy", "prices": { "half": 100, "full": 200 }, "type": "non-veg" },
+                { "name": "Chicken Manchurian", "prices": { "half": 100, "full": 200 }, "type": "non-veg" },
+                { "name": "Chicken Hot Garlic Sauce", "prices": { "half": 120, "full": 170, "large": 210 }, "type": "non-veg" },
+                { "name": "Chicken Hong Kong Gravy", "prices": { "half": 120, "full": 170, "large": 210 }, "type": "non-veg" },
+                { "name": "Schezwan Chicken Pepper Sauce", "prices": { "half": 120, "full": 170, "large": 210 }, "type": "non-veg" }
+            ],
+            "ChopSuey": [
+                { "name": "Veg. ChopSuey", "prices": { "full": 140 }, "type": "veg" },
+                { "name": "Chicken ChopSuey", "prices": { "full": 170 }, "type": "non-veg" },
+                { "name": "Chinese ChopSuey", "prices": { "full": 150 }, "type": "veg" },
+                { "name": "American ChopSuey", "prices": { "full": 200 }, "type": "veg" }
+            ],
+            "Combos & Momos": [
+                { "name": "Veg. Combo", "prices": { "full": 80 }, "type": "veg" },
+                { "name": "Non-Veg. Combo", "prices": { "full": 100 }, "type": "non-veg" },
+                { "name": "Steam & Fried Chicken Momos", "prices": { "full": 120 }, "type": "non-veg" }
+            ]
+        };
+
+        function renderMenu() {
+            const container = document.getElementById('menu-container');
+            const tabs = document.getElementById('category-tabs');
+            container.innerHTML = '';
+            tabs.innerHTML = '';
+
+            let categoryIdx = 0;
+            for (const category in menuData) {
+                const safeCatId = `cat-${categoryIdx++}`;
+                
+                // Add category tab entry button
+                tabs.innerHTML += `<a href="#${safeCatId}" class="px-3 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full whitespace-nowrap scroll-mx-4 text-gray-600 dark:text-gray-300 active:bg-brand-gold active:text-black transition">${category}</a>`;
+
+                let sectionHtml = `
+                    <section id="${safeCatId}" class="menu-section">
+                        <h2 class="text-xl font-bold mb-4 border-l-4 border-brand-gold pl-2 tracking-tight text-gray-900 dark:text-gray-100">${category}</h2>
+                        <div class="grid gap-3 sm:grid-cols-2">
+                `;
+
+                menuData[category].forEach(item => {
+                    let rateString = '';
+                    if(item.prices.half) rateString += `<span class="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded">H: ₹${item.prices.half}</span> `;
+                    if(item.prices.full) rateString += `<span class="text-xs bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 px-2 py-0.5 rounded font-semibold">F: ₹${item.prices.full}</span> `;
+                    if(item.prices.large) rateString += `<span class="text-xs bg-red-50 dark:bg-red-950/30 text-red-600 dark:text-red-400 px-2 py-0.5 rounded">L: ₹${item.prices.large}</span>`;
+
+                    const indicatorColor = item.type === 'veg' ? 'border-emerald-600 text-emerald-600' : 'border-red-600 text-red-600';
+                    const iconShape = item.type === 'veg' ? 'fa-circle' : 'fa-caret-up text-base';
+
+                    sectionHtml += `
+                        <div class="menu-item bg-white dark:bg-zinc-950 p-3 rounded-xl border border-gray-100 dark:border-gray-900 shadow-sm flex items-start justify-between transition hover:shadow-md" data-name="${item.name.toLowerCase()}">
+                            <div class="space-y-1 pr-2">
+                                <div class="flex items-center space-x-2">
+                                    <span class="inline-flex items-center justify-center w-4 h-4 border ${indicatorColor} rounded text-[8px]" title="${item.type.toUpperCase()}">
+                                        <i class="fa-solid ${iconShape}"></i>
+                                    </span>
+                                    <h3 class="font-semibold text-sm leading-tight text-gray-900 dark:text-gray-50">${item.name}</h3>
+                                </div>
+                                <div class="pt-1 flex flex-wrap gap-1.5">${rateString}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                sectionHtml += `</div></section>`;
+                container.innerHTML += sectionHtml;
+            }
+        }
+
+        function filterMenu() {
+            const query = document.getElementById('search-bar').value.toLowerCase();
+            const items = document.querySelectorAll('.menu-item');
+            
+            items.forEach(item => {
+                const name = item.getAttribute('data-name');
+                if (name.includes(query)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Hide empty headers
+            document.querySelectorAll('.menu-section').forEach(section => {
+                const visibleItems = section.querySelectorAll('.menu-item[style="display: flex;"]');
+                const allItems = section.querySelectorAll('.menu-item');
+                if (query !== "" && visibleItems.length === 0 && allItems.length > 0) {
+                    section.style.display = 'none';
+                } else {
+                    section.style.display = 'block';
+                }
+            });
+        }
+
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const themeIcon = document.getElementById('theme-icon');
+            if (document.documentElement.classList.contains('dark')) {
+                themeIcon.className = 'fa-solid fa-sun text-xl';
+            } else {
+                themeIcon.className = 'fa-solid fa-moon text-xl';
+            }
+        }
+
+        function toggleQRModal() {
+            const modal = document.getElementById('qr-modal');
+            modal.classList.toggle('hidden');
+            modal.classList.toggle('flex');
+        }
+
+        // Initialize Engine setup
+        window.addEventListener('DOMContentLoaded', () => {
+            renderMenu();
+            
+            // Build real-time URL context for local or remote hosting dynamically
+            const currentURL = window.location.href;
+            new QRCode(document.getElementById("qrcode-canvas"), {
+                text: currentURL,
+                width: 180,
+                height: 180,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+    </script>
+</body>
+</html>
