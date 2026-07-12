@@ -23,51 +23,59 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Cinzel:wght@500;600;700&family=Poppins:wght@400;500;600;700&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..600,0..1,-25..200">
 <style>
   :root{
-    --teal-950:#0a2320;
-    --teal-900:#0d332f;
-    --teal-800:#124b44;
-    --teal-700:#166a60;
-    --teal-600:#1c8a7c;
-    --teal-500:#22a595;
+    --teal-950:#062E2B;
+    --teal-900:#0A4A45;
+    --teal-800:#0B6E69;
+    --teal-700:#047F7A;
+    --teal-600:#138A7E;
+    --teal-500:#17A08F;
     --teal-glow:#3fc9b7;
-    --gold:#c9a84a;
-    --gold-soft:#e6c976;
-    --cream:#f8f3e8;
-    --cream-dim:#efe7d5;
-    --ink:#12201d;
+    --gold:#D4AF37;
+    --gold-soft:#E4C767;
+    --cream:#FAF6EE;
+    --cream-dim:#F0E9D8;
+    --ink:#1D1D1B;
     --veg:#3f9d55;
     --nonveg:#c4453a;
-    --card-bg:#0f3b35;
-    --card-bg-light:#ffffff;
+    --card-bg:#0A4A45;
+    --card-bg-light:#FCFCFA;
     --shadow-lg: 0 20px 45px -20px rgba(6,20,18,.55);
     --radius-plaque: 26px;
-    --serif: "Fraunces", Georgia, serif;
-    --script: "Sacramento", cursive;
-    --sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --script: "Cormorant Garamond", Georgia, serif;
+    --cinzel: "Cinzel", serif;
+    --sans: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --price-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
   [data-theme="light"]{
     --bg-page: var(--cream);
     --bg-section-alt: var(--cream-dim);
     --text-main: var(--ink);
-    --text-sub: #4c5d58;
-    --card-surface: #ffffff;
-    --card-border: rgba(18,32,29,.08);
-    --header-bg: rgba(248,243,232,.86);
+    --text-sub: #5a5a57;
+    --card-surface: var(--card-bg-light);
+    --card-border: #D9D9D9;
+    --header-bg: rgba(250,246,238,.86);
   }
   [data-theme="dark"]{
     --bg-page: var(--teal-950);
-    --bg-section-alt: #0c2b27;
-    --text-main: #f3ede0;
+    --bg-section-alt: #082C29;
+    --text-main: #FAF6EE;
     --text-sub: #b9cfc9;
-    --card-surface: #103e38;
+    --card-surface: #0E403B;
     --card-border: rgba(255,255,255,.08);
-    --header-bg: rgba(10,35,32,.86);
+    --header-bg: rgba(6,46,43,.86);
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
+  
+  .material-symbols-outlined{
+    font-variation-settings:'FILL' 0,'wght' 500,'GRAD' 0,'opsz' 24;
+    font-size:1.15em;line-height:1;display:inline-block;vertical-align:middle;
+  }
   body{
     margin:0;
     background:var(--bg-page);
@@ -91,7 +99,7 @@
   .loader-mark{width:64px;height:64px;position:relative;}
   .loader-mark svg{width:100%;height:100%;animation:spin 1.4s linear infinite;}
   @keyframes spin{to{transform:rotate(360deg);}}
-  #loader p{font-family:var(--script);font-size:1.5rem;color:var(--gold-soft);margin:0;}
+  #loader p{font-family:var(--script);font-weight:700;letter-spacing:.01em;font-size:1.6rem;color:var(--gold-soft);margin:0;}
 
   /* ---------- Header ---------- */
   header.site-header{
@@ -106,11 +114,35 @@
   .brand-badge{width:42px;height:42px;flex:none;border-radius:50%;background:linear-gradient(155deg,var(--teal-600),var(--teal-800));display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.25);}
   .brand-badge svg{width:24px;height:24px;}
   .brand-text{min-width:0;}
-  .brand-text .name{font-family:var(--script);font-size:1.5rem;line-height:1;color:var(--text-main);white-space:nowrap;}
+  .brand-text .name{font-family:var(--script);font-weight:700;letter-spacing:.01em;font-size:1.5rem;line-height:1;color:var(--text-main);white-space:nowrap;}
   .brand-text .tag{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-sub);display:block;margin-top:2px;}
+  
   .header-actions{display:flex;align-items:center;gap:4px;}
-  .icon-btn{width:38px;height:38px;border-radius:12px;border:1px solid var(--card-border);background:var(--card-surface);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-main);}
-  .icon-btn svg{width:18px;height:18px;}
+  .icon-btn{width:38px;height:38px;border-radius:12px;border:1px solid rgba(4,127,122,.28);background:rgba(4,127,122,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--teal-700);transition:background .15s,color .15s;}
+  .icon-btn:hover{background:var(--teal-700);color:#fff;}
+  .icon-btn svg{width:18px;height:18px;stroke:currentColor;}
+  .icon-btn-google{background:#fff;border-color:rgba(17,22,20,.14);transition:background .15s,border-color .15s,box-shadow .15s,transform .15s;}
+  .icon-btn-google:hover,.icon-btn-google:focus-visible{background:#fff;border-color:var(--teal-700);box-shadow:0 6px 14px -6px rgba(4,127,122,.5);transform:translateY(-1px);}
+  .icon-btn-insta{background:#fff;color:#E1306C;border-color:rgba(17,22,20,.14);transition:all .15s;}
+  .icon-btn-insta:hover,.icon-btn-insta:focus-visible{background:#fff;color:#C13584;border-color:#E1306C;box-shadow:0 6px 14px -6px rgba(225,48,108,.5);transform:translateY(-1px);}
+
+  /* ---------- Icon tooltip ---------- */
+  [data-tooltip]{position:relative;}
+  [data-tooltip]::after{
+    content:attr(data-tooltip);position:absolute;top:calc(100% + 10px);left:50%;
+    transform:translate(-50%,-6px);background:var(--teal-950);color:#fff;
+    font-family:var(--sans);font-size:.68rem;font-weight:600;white-space:nowrap;
+    padding:7px 12px;border-radius:8px;box-shadow:var(--shadow-lg);
+    opacity:0;visibility:hidden;pointer-events:none;z-index:80;
+    transition:opacity .18s ease,transform .18s ease,visibility .18s;
+  }
+  [data-tooltip]::before{
+    content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(2px);
+    border:5px solid transparent;border-bottom-color:var(--teal-950);
+    opacity:0;pointer-events:none;z-index:80;transition:opacity .18s ease,transform .18s ease;
+  }
+  [data-tooltip]:hover::after,[data-tooltip]:focus-visible::after{opacity:1;visibility:visible;transform:translate(-50%,0);}
+  [data-tooltip]:hover::before,[data-tooltip]:focus-visible::before{opacity:1;transform:translateX(-50%) translateY(0);}
 
   /* ---------- Install banner ---------- */
   .install-banner{
@@ -138,7 +170,7 @@
   }
   .hero .container{position:relative;z-index:2;}
   .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-soft);border:1px solid rgba(201,168,74,.4);padding:5px 12px;border-radius:999px;margin-bottom:18px;}
-  .hero h1{font-family:var(--script);font-size:3.4rem;line-height:.95;margin:0 0 6px;color:#fff;}
+  .hero h1{font-family:var(--script);font-weight:700;letter-spacing:.005em;font-size:3.4rem;line-height:.98;margin:0 0 6px;color:#fff;}
   .hero h2{font-family:var(--serif);font-weight:500;font-style:italic;font-size:1.2rem;margin:0 0 16px;color:var(--gold-soft);}
   .hero p.desc{max-width:38ch;color:#cfe4de;font-size:.95rem;line-height:1.55;margin:0 0 26px;}
   .hero-actions{display:flex;flex-wrap:wrap;gap:10px;}
@@ -191,10 +223,11 @@
     flex:none;display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 14px;border-radius:16px;
     background:var(--card-surface);border:1px solid var(--card-border);cursor:pointer;min-width:64px;
   }
-  .cat-chip .emoji{font-size:1.2rem;}
-  .cat-chip span.lbl{font-size:.64rem;font-weight:700;color:var(--text-sub);white-space:nowrap;}
+  .cat-chip .icon{font-size:1.35rem;color:var(--teal-500);}
+  .cat-chip span.lbl{font-family:var(--cinzel);font-size:.62rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-sub);white-space:nowrap;}
   .cat-chip.active{background:var(--teal-700);border-color:var(--teal-700);}
   .cat-chip.active span.lbl{color:#fff;}
+  .cat-chip.active .icon{color:#fff;}
 
   /* ---------- Section headers ---------- */
   .section{padding:36px 0 6px;}
@@ -202,10 +235,11 @@
   .section-head h3{font-family:var(--serif);font-weight:600;font-size:1.5rem;margin:0;display:flex;align-items:center;gap:10px;}
   .section-head .count{font-size:.72rem;color:var(--text-sub);font-weight:600;}
   .plaque-tag{
-    display:inline-flex;align-items:center;justify-content:center;
-    background:var(--teal-700);color:#fff;font-family:var(--serif);font-style:italic;font-weight:500;
-    padding:3px 14px;border-radius:14px 14px 4px 4px / 10px 10px 4px 4px;font-size:.9rem;
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    background:var(--teal-700);color:#fff;font-family:var(--cinzel);font-style:normal;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+    padding:5px 16px;border-radius:14px 14px 4px 4px / 10px 10px 4px 4px;font-size:.85rem;
   }
+  .plaque-tag .icon{font-size:1.1rem;color:var(--gold-soft);}
 
   /* ---------- Dish grid & card ---------- */
   .dish-grid{display:grid;grid-template-columns:1fr;gap:12px;}
@@ -221,23 +255,30 @@
   }
   .dish-card:hover{transform:translateY(-2px);box-shadow:0 14px 28px -14px rgba(0,0,0,.4);}
   .dish-thumb{
-    width:56px;height:56px;border-radius:14px;flex:none;display:flex;align-items:center;justify-content:center;font-size:1.5rem;
+    width:56px;height:56px;border-radius:14px;flex:none;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#eafff9;
     background:linear-gradient(155deg,var(--teal-600),var(--teal-800));position:relative;
   }
+  .dish-thumb .icon{font-size:1.55rem;}
   .dish-thumb.veg-border{box-shadow:inset 0 0 0 2px var(--veg);}
   .dish-thumb.nonveg-border{box-shadow:inset 0 0 0 2px var(--nonveg);}
   .dish-info{flex:1;min-width:0;}
   .dish-info .top-line{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
-  .dish-name{font-weight:700;font-size:.92rem;line-height:1.25;}
+  .dish-name{font-family:var(--sans);font-weight:500;font-size:.92rem;line-height:1.3;}
   .veg-dot{width:11px;height:11px;border:1.5px solid var(--veg);border-radius:2px;position:relative;flex:none;}
   .veg-dot::after{content:"";position:absolute;inset:2px;background:var(--veg);border-radius:50%;}
   .nonveg-dot{width:11px;height:11px;border:1.5px solid var(--nonveg);border-radius:2px;position:relative;flex:none;}
   .nonveg-dot::after{content:"";position:absolute;inset:2px;background:var(--nonveg);border-radius:50%;}
-  .badge{font-size:.6rem;font-weight:800;padding:2px 7px;border-radius:999px;letter-spacing:.03em;}
-  .badge.bestseller{background:rgba(201,168,74,.18);color:var(--gold);}
-  .badge.spicy{background:rgba(196,69,58,.14);color:var(--nonveg);}
-  .badge.chef{background:rgba(34,165,149,.16);color:var(--teal-500);}
-  .dish-price{font-family:var(--serif);font-weight:600;font-size:1rem;color:var(--teal-500);white-space:nowrap;margin-left:auto;padding-left:8px;}
+  
+  .badge{font-size:.6rem;font-weight:800;padding:3px 8px;border-radius:999px;letter-spacing:.03em;border:1px solid transparent;}
+  .badge.bestseller{background:linear-gradient(120deg,rgba(201,168,74,.22),rgba(201,168,74,.1));color:var(--gold);border-color:rgba(201,168,74,.35);}
+  .badge.spicy{background:rgba(196,69,58,.14);color:var(--nonveg);border-color:rgba(196,69,58,.25);}
+  .badge.chef{background:linear-gradient(120deg,rgba(34,165,149,.2),rgba(34,165,149,.08));color:var(--teal-500);border-color:rgba(34,165,149,.3);}
+  .badge.new{background:rgba(63,201,183,.16);color:var(--teal-glow);border-color:rgba(63,201,183,.3);}
+  .dish-price{font-family:var(--price-font);font-weight:600;font-size:1rem;color:var(--teal-500);white-space:nowrap;margin-left:auto;padding-left:8px;}
+  .dish-price.dual{display:flex;flex-direction:column;align-items:flex-end;gap:2px;font-size:.86rem;}
+  .dish-price.dual .price-row{display:flex;align-items:baseline;gap:6px;white-space:nowrap;}
+  .dish-price.dual .price-label{font-family:var(--price-font);font-weight:600;font-size:.6rem;letter-spacing:.05em;text-transform:uppercase;color:var(--text-sub);min-width:34px;text-align:right;}
+  .dish-price.dual .price-val{font-family:var(--price-font);font-weight:700;color:var(--teal-500);min-width:44px;text-align:right;}
   .no-result{display:none;text-align:center;padding:50px 20px;color:var(--text-sub);}
   .no-result.show{display:block;}
   .no-result .emoji{font-size:2.2rem;margin-bottom:10px;}
@@ -249,9 +290,9 @@
     flex:none;width:150px;background:var(--card-surface);border:1px solid var(--card-border);border-radius:18px;padding:14px;
     box-shadow:0 10px 22px -14px rgba(0,0,0,.35);
   }
-  .bs-card .bs-icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(155deg,var(--gold-soft),var(--gold));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:10px;}
+  .bs-card .bs-icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(155deg,var(--gold-soft),var(--gold));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:10px;color:#221a08;}
   .bs-card .bs-name{font-weight:700;font-size:.82rem;line-height:1.25;margin-bottom:4px;}
-  .bs-card .bs-price{color:var(--teal-500);font-weight:700;font-size:.85rem;}
+  .bs-card .bs-price{color:var(--teal-500);font-family:var(--price-font);font-weight:700;font-size:.85rem;}
   .fire-tag{display:inline-flex;align-items:center;gap:3px;font-size:.6rem;font-weight:800;color:var(--nonveg);margin-bottom:6px;}
 
   /* ---------- Combos ---------- */
@@ -267,7 +308,7 @@
   .combo-items{list-style:none;margin:0 0 14px;padding:0;font-size:.8rem;color:#cfe4de;}
   .combo-items li{padding:3px 0;border-bottom:1px dashed rgba(255,255,255,.12);}
   .combo-price-row{display:flex;align-items:baseline;gap:8px;}
-  .combo-price{font-family:var(--serif);font-size:1.4rem;font-weight:700;color:var(--gold-soft);}
+  .combo-price{font-family:var(--price-font);font-size:1.4rem;font-weight:700;color:var(--gold-soft);}
   .combo-save{font-size:.7rem;color:#9fd8cd;}
 
   /* ---------- Offer banner ---------- */
@@ -275,7 +316,8 @@
     margin:36px 0 0;background:linear-gradient(120deg,var(--gold),var(--gold-soft));border-radius:20px;
     padding:16px 18px;display:flex;align-items:center;gap:12px;overflow:hidden;position:relative;color:#25200a;
   }
-  .offer-track{display:flex;gap:34px;animation:marquee 14s linear infinite;white-space:nowrap;font-weight:700;font-size:.85rem;}
+  .offer-track{display:flex;gap:34px;animation:marquee 40s linear infinite;white-space:nowrap;font-weight:700;font-size:.85rem;}
+  .offer-track span{display:inline-flex;align-items:center;gap:8px;}
   @keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 
   /* ---------- Floating action buttons ---------- */
@@ -300,7 +342,7 @@
   /* ---------- Footer ---------- */
   footer{background:var(--teal-950);color:#dfeeea;margin-top:50px;padding:44px 0 30px;}
   .footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
-  .footer-brand .name{font-family:var(--script);font-size:2rem;color:#fff;}
+  .footer-brand .name{font-family:var(--script);font-weight:700;letter-spacing:.01em;font-size:2rem;color:#fff;}
   footer .addr{font-size:.85rem;color:#a9c4bd;line-height:1.7;margin-bottom:18px;}
   .footer-links{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;}
   .footer-links a{font-size:.78rem;font-weight:700;background:rgba(255,255,255,.06);padding:8px 13px;border-radius:999px;border:1px solid rgba(255,255,255,.1);}
@@ -327,6 +369,11 @@
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;}
   }
+  @media (max-width:380px){
+    .header-actions{gap:2px;}
+    .icon-btn{width:34px;height:34px;border-radius:10px;}
+    .icon-btn svg{width:16px;height:16px;}
+  }
 </style>
 </head>
 <body data-theme="dark">
@@ -348,16 +395,30 @@
       </div>
       <div class="brand-text">
         <span class="name">Touch of Taste</span>
-        <span class="tag">Take Away · Indian · Chinese · Tandoor</span>
+        <span class="tag">Indian · Chinese · Tandoor</span>
       </div>
     </div>
     <div class="header-actions">
       <button class="icon-btn" id="searchJump" aria-label="Search menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
       </button>
-      <a class="icon-btn" href="https://www.instagram.com/touch_of_taste1/" target="_blank" rel="noopener" aria-label="Instagram @touch_of_taste1">
+      <a class="icon-btn icon-btn-insta" href="https://www.instagram.com/touch_of_taste1/" target="_blank" rel="noopener" aria-label="Instagram @touch_of_taste1">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
       </a>
+      
+      <!-- UPDATED Google Business review link -->
+      <a class="icon-btn icon-btn-google" href="https://share.google/ig6La340dAgUHHQGf" target="_blank" rel="noopener" aria-label="Rate us on Google" data-tooltip="Rate Us on Google ⭐⭐⭐⭐⭐">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <clipPath id="gReviewClip"><path d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z"/></clipPath>
+          <g clip-path="url(#gReviewClip)">
+            <path fill="#FBBC05" d="M0 37V11l17 13z"/>
+            <path fill="#EA4335" d="M0 11l17 13 7-6.1L48 14V0H0z"/>
+            <path fill="#34A853" d="M0 37l30-23 7.9 1L48 0v48H0z"/>
+            <path fill="#4285F4" d="M48 48L17 24l-4-3 35-10z"/>
+          </g>
+        </svg>
+      </a>
+
       <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36A5.4 5.4 0 0 1 12 3Z"/></svg>
       </button>
@@ -384,8 +445,8 @@
   <div class="container">
     <span class="hero-eyebrow">Fresh · Hot · Delivered</span>
     <h1>Touch of Taste</h1>
-    <h2>Take Away — a little touch, a lot of flavour</h2>
-    <p class="desc">Momos, sizzling starters, wok-tossed noodles &amp; rice, rolls and Chinese gravies — made fresh to order. Free home delivery on orders above ₹200.</p>
+    <h2>Welcome to Touch of Taste — Where Premium Flavours Meet Exceptional Quality.</h2>
+    <p class="desc">Enjoy Handcrafted Momos, Signature Chinese Delicacies, Crispy Starters, Gourmet Rolls, Wok-Tossed Noodles &amp; Rice, Freshly Prepared to Order. FREE Home Delivery on Orders Above ₹200.</p>
     <div class="hero-actions">
       <a class="btn btn-whatsapp" href="https://wa.me/919810301182?text=Hi%20Touch%20of%20Taste%2C%20I%27d%20like%20to%20order" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-2-1.2-.7-.7-1.2-1.5-1.4-1.7-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.6-1.4-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.2-1 1-1 2.3s1 2.7 1.2 2.9c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.5-.3Z"/></svg>
@@ -442,12 +503,26 @@
   <!-- Offer banner -->
   <div class="offer-banner">
     <div class="offer-track">
-      <span>🚚 Free home delivery above ₹200</span>
-      <span>📸 Follow @touch_of_taste1</span>
-      <span>🛵 Also on Zomato &amp; Swiggy</span>
-      <span>🚚 Free home delivery above ₹200</span>
-      <span>📸 Follow @touch_of_taste1</span>
-      <span>🛵 Also on Zomato &amp; Swiggy</span>
+      <span><span class="material-symbols-outlined icon">celebration</span> We Also Organise Events &amp; Catering</span>
+      <span><span class="material-symbols-outlined icon">cake</span> Birthday Parties</span>
+      <span><span class="material-symbols-outlined icon">favorite</span> Anniversary Celebrations</span>
+      <span><span class="material-symbols-outlined icon">corporate_fare</span> Corporate Events</span>
+      <span><span class="material-symbols-outlined icon">diamond</span> Wedding Catering</span>
+      <span><span class="material-symbols-outlined icon">groups</span> Kitty Parties</span>
+      <span><span class="material-symbols-outlined icon">home</span> House Parties</span>
+      <span><span class="material-symbols-outlined icon">outdoor_grill</span> Outdoor Catering</span>
+      <span><span class="material-symbols-outlined icon">star</span> Best Event Organisers &amp; Catering Service Providers in Delhi</span>
+      <span>🎊 Contact Us Today — Make Your Event Unforgettable!</span>
+      <span><span class="material-symbols-outlined icon">celebration</span> We Also Organise Events &amp; Catering</span>
+      <span><span class="material-symbols-outlined icon">cake</span> Birthday Parties</span>
+      <span><span class="material-symbols-outlined icon">favorite</span> Anniversary Celebrations</span>
+      <span><span class="material-symbols-outlined icon">corporate_fare</span> Corporate Events</span>
+      <span><span class="material-symbols-outlined icon">diamond</span> Wedding Catering</span>
+      <span><span class="material-symbols-outlined icon">groups</span> Kitty Parties</span>
+      <span><span class="material-symbols-outlined icon">home</span> House Parties</span>
+      <span><span class="material-symbols-outlined icon">outdoor_grill</span> Outdoor Catering</span>
+      <span><span class="material-symbols-outlined icon">star</span> Best Event Organisers &amp; Catering Service Providers in Delhi</span>
+      <span>🎊 Contact Us Today — Make Your Event Unforgettable!</span>
     </div>
   </div>
 
@@ -459,33 +534,32 @@
     <div class="emoji">🍽️</div>
     <p>No dishes match your search.<br>Try “momos”, “roll”, or “chicken”.</p>
   </div>
-
 </div>
 
 <!-- Footer -->
 <footer>
-  <div class="container">
-    <div class="footer-brand">
+  <div class="container" style="text-align: center;">
+    <div class="footer-brand" style="justify-content: center;">
       <div class="brand-badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M6 9c0-3 2-5 2-5s-1 3 1 4c1-2 3-3 3-3s-.5 2 .5 3c1.5-.5 2.5-2 2.5-2s0 2.5-1.5 4c1 .5 1.5 1.5 1.5 3H6c0-1.5.6-2.7 1.6-3.3C6.6 9.4 6 8.3 6 7Z"/><path d="M6 12h12v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7Z"/></svg>
       </div>
       <span class="name">Touch of Taste</span>
     </div>
-    <p class="addr">
-      Indian • Chinese • Tandoor Cuisine — Take Away &amp; Supreme Catering for all seasons<br>
-      📍 Street Number 6, near Chill Point, Block VB, Virender Nagar, 110058<br>
-      📞 9212157779 &nbsp;·&nbsp; 📱 9810301182<br>
-      Free home delivery — minimum order ₹200
+    <p class="addr" style="text-align: center; line-height: 1.8;">
+      🥘 Authentic Indian • Chinese • Tandoor Cuisine<br>
+      ✨ Freshly Crafted • Premium Ingredients • Unforgettable Taste<br>
+      🎉 Expert Catering for Weddings • Corporate Events • Birthday Parties • House Parties<br>
+      📍 Virender Nagar, New Delhi<br>
+      📞 92121 57779 | 98103 01182<br>
+      🚚 FREE Delivery on Orders Above ₹200
     </p>
-    <div class="footer-links">
+    <div class="footer-links" style="justify-content: center;">
       <a href="https://wa.me/919810301182" target="_blank" rel="noopener">WhatsApp</a>
       <a href="tel:9212157779">Call</a>
       <a href="https://www.google.com/maps/dir/?api=1&destination=28.6249771,77.0967709" target="_blank" rel="noopener">Google Maps</a>
       <a href="https://www.instagram.com/touch_of_taste1/" target="_blank" rel="noopener">@touch_of_taste1</a>
-      <a href="https://link.zomato.com/xqzv/rshare?id=6158270630563407&utm_source=ig&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener">Zomato</a>
-      <a href="#" target="_blank" rel="noopener">Swiggy</a>
     </div>
-    <p class="fine">© <span id="year"></span> Touch of Taste Take Away. All rights reserved. · Menu digitised for QR ordering.</p>
+    <p class="fine">© <span id="year"></span> Touch of Taste. All rights reserved.</p>
   </div>
 </footer>
 
@@ -526,29 +600,69 @@
 (function(){
   // ---------------- DATA ----------------
   const CATS = [
-    {id:'momos', label:'Momos', emoji:'🥟'},
-    {id:'starters', label:'Starters', emoji:'🔥'},
-    {id:'fish', label:'Fish', emoji:'🐟'},
-    {id:'soup', label:'Soup', emoji:'🍲'},
-    {id:'fried', label:'Fried & Crunchy', emoji:'🍤'},
-    {id:'burger', label:'Burger', emoji:'🍔'},
-    {id:'rice', label:'Golden Rice', emoji:'🍛'},
-    {id:'noodles', label:'Noodles', emoji:'🍜'},
-    {id:'gravy', label:'Chinese Gravy', emoji:'🥘'},
-    {id:'chopsuey', label:'Chopsuey', emoji:'🥡'},
-    {id:'rolls', label:'Rolls', emoji:'🌯'},
+    {id:'momos', label:'Momos', icon:'ramen_dining'},
+    {id:'starters', label:'Starters', icon:'local_fire_department'},
+    {id:'fish', label:'Fish', icon:'set_meal'},
+    {id:'soup', label:'Soup', icon:'soup_kitchen'},
+    {id:'fried', label:'Fried & Crunchy', icon:'fastfood'},
+    {id:'burger', label:'Burger', icon:'lunch_dining'},
+    {id:'rice', label:'Golden Rice', icon:'rice_bowl'},
+    {id:'noodles', label:'Noodles', icon:'ramen_dining'},
+    {id:'gravy', label:'Chinese Gravy', icon:'dinner_dining'},
+    {id:'chopsuey', label:'Chopsuey', icon:'takeout_dining'},
+    {id:'rolls', label:'Rolls', icon:'kebab_dining'},
   ];
 
   const D = (name, price, diet, opts) => Object.assign({name, price, diet}, opts||{});
+  const D2 = (name, price1, price2, diet, opts, labels) => Object.assign({name, price1, price2, labels: labels || ['Half','Full'], diet}, opts||{});
 
   const MENU = {
     momos: {
-      veg: [D('Veg. Steam Momos',90,'veg'), D('Veg. Fried Momos',100,'veg'), D('Paneer Steam Momos',120,'veg'), D('Paneer Fried Momos',120,'veg'), D('Paneer Crispy Momos',150,'veg'), D('Chilly Garlic Paneer Momoes',150,'veg'), D('Paneer Malai Momos',150,'veg')],
-      nonveg: [D('Chicken Steam Momos',120,'nonveg',{bestseller:true}), D('Chicken Fried Momos',120,'nonveg'), D('Chicken Crispy Momos',150,'nonveg',{bestseller:true}), D('Chilly Garlic Chicken Momos',150,'nonveg'), D('Chicken Malai Momos',150,'nonveg')]
+      veg: [
+        D2('Veg Momos',80,90,'veg',{},['Steam','Fried']),
+        D2('Paneer Momos',90,100,'veg',{},['Steam','Fried']),
+        D('Paneer Crispy Momos',130,'veg'),
+        D('Chilli Garlic Paneer Momos',150,'veg'),
+        D('Paneer Malai Momos',150,'veg'),
+        D('Pan Fried Paneer Momos',140,'veg'),
+        D('Veg Steam Momos (GYM Special)',300,'veg')
+      ],
+      nonveg: [
+        D2('Chicken Momos',90,100,'nonveg',{bestseller:true},['Steam','Fried']),
+        D('Chicken Crispy Momos',130,'nonveg',{bestseller:true}),
+        D('Chicken Garlic Momos',150,'nonveg'),
+        D('Chicken Malai Momos',170,'nonveg')
+      ]
     },
     starters: {
-      veg: [D('Chilli Potato',150,'veg'), D('Chilli Honey Potato',150,'veg'), D('Chilly Garlic Gobhi (Seasonal)',170,'veg'), D('Veg. Manchurian Dry',170,'veg'), D('Veg. Chilli Garlic Soya Chaap',170,'veg'), D('Creamy Soya Chaap',170,'veg'), D('Paneer Manchurian Dry',200,'veg'), D('Chilli Paneer Dry',200,'veg'), D('Creamy Paneer Dry',200,'veg'), D('Corn Salt & Pepper',200,'veg')],
-      nonveg: [D('Chilli Garlic Chicken Kebab',250,'nonveg'), D('Chilli Chicken Dry',250,'nonveg',{bestseller:true,spicy:true}), D('Lemon Chicken Dry',250,'nonveg'), D('Chicken Manchurian Dry',250,'nonveg'), D('Chicken Black Pepper Dry',250,'nonveg'), D('Chicken Hong-Kong Dry',250,'nonveg'), D('Chicken Hot Garlic Dry',250,'nonveg',{spicy:true}), D('Crispy Honey Chicken',250,'nonveg'), D('Creamy Chicken Dry',250,'nonveg'), D('Chef Spl. Chicken',250,'nonveg',{chef:true}), D('Ginger Garlic Chicken',250,'nonveg'), D('Steam Chicken (GYM Spl.)',300,'nonveg')]
+      veg: [
+        D2('Chilli Potato',70,130,'veg'),
+        D2('Honey Chilli Potato',70,140,'veg'),
+        D('Chilly Garlic Gobhi (Seasonal)',170,'veg'),
+        D2('Veg Manchurian Dry',100,180,'veg'),
+        D2('Chilli Garlic Soya Chaap',100,180,'veg'),
+        D2('Creamy Soya Chaap',100,180,'veg'),
+        D2('Paneer Manchurian Dry',130,240,'veg'),
+        D2('Chilli Paneer Dry',130,240,'veg'),
+        D2('Lemon Garlic Paneer',130,240,'veg'),
+        D('Corn Salt & Pepper',240,'veg'),
+        D2('Lemon Garlic Chaap',100,180,'veg')
+      ],
+      nonveg: [
+        D2('Chilli Garlic Chicken Kabab',180,250,'nonveg'),
+        D2('Chilli Chicken Dry',180,250,'nonveg',{bestseller:true,spicy:true}),
+        D2('Lemon Chicken Dry',180,260,'nonveg'),
+        D2('Chicken Manchurian Dry',150,250,'nonveg'),
+        D2('Chicken Black Pepper',160,260,'nonveg'),
+        D2('Chicken Salt & Pepper',160,260,'nonveg'),
+        D('Chicken Hong-Kong Dry',250,'nonveg'),
+        D2('Chicken Hot Garlic',160,260,'nonveg',{spicy:true}),
+        D2('Crispy Honey Chicken',160,260,'nonveg'),
+        D2('Creamy Chicken Dry',160,260,'nonveg'),
+        D('Chef Spl. Chicken',250,'nonveg',{chef:true}),
+        D2('Ginger Garlic Chicken',160,260,'nonveg'),
+        D('Steam Chicken (GYM Spl.)',300,'nonveg')
+      ]
     },
     fish: {
       nonveg: [D('Fish Finger with Hot Garlic Sauce',430,'nonveg'), D('Fish Amritsari with Mint Sauce',430,'nonveg'), D('Fish Chilli Garlic',430,'nonveg',{spicy:true}), D('Fish Lemon Garlic Chilli',430,'nonveg'), D("Fish Orley with Tarter Sauce",450,'nonveg')]
@@ -558,32 +672,88 @@
       nonveg: [D('Chicken Sweet Corn Soup',120,'nonveg'), D('Chicken Hot & Sour Soup',120,'nonveg'), D('Chicken Talumein Soup',120,'nonveg'), D('Chicken Manchow Soup',120,'nonveg'), D('Chicken Lemon Coriander Soup',120,'nonveg'), D('Chicken Thukpa Soup',120,'nonveg'), D('Cream of Chicken Soup',120,'nonveg')]
     },
     fried: {
-      veg: [D('Veg. Spring Roll',110,'veg'), D("French Fry's",110,'veg'), D('Crispy Soya Chaap with Hot Garlic Sauce',200,'veg'), D('Crispy Paneer Bite with Thousand Sauce',220,'veg'), D('Crispy Kebab with Hot Garlic Sauce',220,'veg')],
-      nonveg: [D('Chicken Seek Kebab with Mint Sauce + Onion',150,'nonveg'), D('CFC Crispy Chicken with Hot Garlic + Thousand Sauce',270,'nonveg',{bestseller:true}), D('Spicy Chicken Fingers with Hot Garlic + Thousand Sauce',270,'nonveg',{spicy:true})]
+      veg: [
+        D2('Veg Spring Roll',50,100,'veg'),
+        D2('French Fries',50,90,'veg'),
+        D2('Crispy Soya Chaap',100,180,'veg'),
+        D2('Crispy Paneer Bite with Thousand Island Sauce',130,240,'veg'),
+        D('Crispy Kebab with Hot Garlic Sauce',220,'veg')
+      ],
+      nonveg: [
+        D('Chicken Seek Kebab with Mint Sauce + Onion',150,'nonveg'),
+        D2('CFC Crispy Chicken (Hot Garlic & Thousand Island Sauce)',170,270,'nonveg',{bestseller:true}),
+        D2('Spicy Chicken Fingers',170,270,'nonveg',{spicy:true})
+      ]
     },
     burger: {
-      veg: [D('Veg. Burger',60,'veg'), D('Cheese Burger',70,'veg'), D('Crispy Paneer Burger',100,'veg')],
-      nonveg: [D('Chicken Burger',100,'nonveg'), D('Loaded Chicken Burger',120,'nonveg'), D('CFC Crispy Chicken Burger',120,'nonveg',{bestseller:true})]
+      veg: [D('Veg Burger',60,'veg'), D('Crispy Paneer Burger',90,'veg')],
+      nonveg: [D('Chicken Burger',100,'nonveg'), D('Loaded Chicken Burger',100,'nonveg'), D('CFC Chicken Burger',100,'nonveg',{bestseller:true})]
     },
     rice: {
-      veg: [D('Steam Rice',100,'veg'), D('Chilli Garlic Rice',120,'veg'), D('Butter Jeera Rice',120,'veg'), D('Veg. Fried Rice',120,'veg'), D('Singapuri Fried Rice',150,'veg'), D('Paneer Fried Rice',150,'veg')],
-      nonveg: [D('Egg Fried Rice',150,'nonveg'), D('Chicken Fried Rice',180,'nonveg',{bestseller:true}), D('Chicken Singapuri Rice',180,'nonveg'), D('Chilli Chicken Garlic Fried Rice',180,'nonveg'), D('Chilli Chicken Egg Fried Rice',210,'nonveg'), D('Boneless Chicken Biryani',340,'nonveg',{chef:true})]
+      veg: [
+        D('Steam Rice',90,'veg'),
+        D2('Veg Fried Rice',60,100,'veg'),
+        D2('Chilli Garlic Fried Rice',70,110,'veg'),
+        D2('Singapore Fried Rice',90,150,'veg'),
+        D2('Paneer Fried Rice',90,150,'veg'),
+        D('Butter Jeera Rice',120,'veg')
+      ],
+      nonveg: [
+        D2('Egg Fried Rice',90,140,'nonveg'),
+        D2('Chicken Fried Rice',100,160,'nonveg',{bestseller:true}),
+        D2('Chicken Singapore Fried Rice',100,160,'nonveg'),
+        D2('Chilli Chicken Garlic Fried Rice',100,160,'nonveg'),
+        D2('Chicken Egg Fried Rice',120,200,'nonveg')
+      ]
     },
     noodles: {
-      veg: [D('Veg. Noodles',100,'veg'), D('Chilli Garlic Noodles',120,'veg'), D('Singapuri Noodles with Paneer',150,'veg'), D('Veg. Hakka Noodles with Paneer',150,'veg'), D('Veg. Paneer Noodles',150,'veg')],
-      nonveg: [D('Egg Noodles',140,'nonveg'), D('Chicken Noodles',160,'nonveg',{bestseller:true}), D('Chicken Singapuri Noodles',160,'nonveg'), D('Chicken Chilli Garlic Noodles',160,'nonveg'), D('Chicken Hakka Noodles',160,'nonveg'), D('Chicken-Garlic-Chilli-Egg Noodles',200,'nonveg')]
+      veg: [
+        D2('Veg Noodles',50,90,'veg'),
+        D2('Singapore Noodles',90,140,'veg'),
+        D2('Chilli Garlic Noodles',60,100,'veg'),
+        D2('Veg Hakka Noodles',90,140,'veg'),
+        D2('Veg Paneer Noodles',100,150,'veg')
+      ],
+      nonveg: [
+        D2('Chicken Egg Noodles',90,140,'nonveg'),
+        D2('Chicken Noodles',100,150,'nonveg',{bestseller:true}),
+        D2('Chicken Singapore Noodles',110,160,'nonveg'),
+        D2('Garlic Chicken Noodles',110,160,'nonveg'),
+        D2('Chicken Hakka Noodles',110,160,'nonveg'),
+        D2('Chicken Garlic Egg Noodles',110,190,'nonveg')
+      ]
     },
     gravy: {
-      veg: [D('Chilli Chaap Gravy',180,'veg'), D('Mix Veg. Hot Garlic Sauce',180,'veg'), D('Veg. Manchurian Gravy',180,'veg'), D('Chilli Paneer Gravy',210,'veg'), D('Paneer Manchurian Gravy',210,'veg')],
-      nonveg: [D('Chilli Chicken Gravy',250,'nonveg',{bestseller:true,spicy:true}), D('Chicken Manchurian Gravy',250,'nonveg'), D('Chicken Hot Garlic Gravy',250,'nonveg'), D('Chicken Black Pepper Gravy',250,'nonveg'), D('Ginger Garlic Chicken Gravy',250,'nonveg')]
+      veg: [
+        D2('Chilli Chaap Gravy',100,180,'veg'),
+        D('Mix Veg. Hot Garlic Sauce',180,'veg'),
+        D2('Veg Manchurian Gravy',100,170,'veg'),
+        D2('Chilli Paneer',130,230,'veg'),
+        D2('Paneer Manchurian',130,230,'veg')
+      ],
+      nonveg: [
+        D2('Chilli Chicken Gravy',150,250,'nonveg',{bestseller:true,spicy:true}),
+        D2('Chicken Manchurian Gravy',150,250,'nonveg'),
+        D2('Chicken Hot Garlic Gravy',150,250,'nonveg'),
+        D2('Chicken Black Pepper Gravy',150,250,'nonveg'),
+        D2('Ginger Garlic Chicken Gravy',150,250,'nonveg')
+      ]
     },
     chopsuey: {
       veg: [D('Veg. Chopsuey with Crispy Noodles',250,'veg'), D('Paneer Veg. Chopsuey',270,'veg')],
       nonveg: [D('Chicken Chopsuey',290,'nonveg',{chef:true})]
     },
     rolls: {
-      veg: [D('Veg. Cheese Maxican Roll',150,'veg'), D('Chilli Chaap Roll',150,'veg'), D('Chilli Paneer Roll',150,'veg'), D('Veg. Manchurian Roll',150,'veg')],
-      nonveg: [D('Egg Roll Masala',110,'nonveg'), D('Chicken Manchurian Roll',150,'nonveg'), D('Chilli Chicken Roll',150,'nonveg'), D("Chicken Hot 'N' Spicy Roll",150,'nonveg'), D('Chicken Seek Kebab Roll',150,'nonveg'), D('Creamy Chicken Roll',170,'nonveg',{bestseller:true}), D('Chicken Garlic Egg Roll',170,'nonveg'), D('Crispy Spicy Chicken Roll',170,'nonveg')]
+      veg: [
+        D('Veg Roll',140,'veg'),
+        D('Chilli Chaap Roll',140,'veg'),
+        D('Chilli Paneer Roll',140,'veg'),
+        D('Veg. Manchurian Roll',140,'veg'),
+        D('Crispy CFC Paneer Roll',150,'veg',{new:true}),
+        D('Classic Paneer Roll',150,'veg',{new:true}),
+        D('Veg Combo Roll',150,'veg')
+      ],
+      nonveg: [D('Egg Roll Masala',110,'nonveg'), D('Chicken Manchurian Roll',150,'nonveg'), D('Chilli Chicken Roll',150,'nonveg'), D("Chicken Hot 'N' Spicy Roll",150,'nonveg'), D('Chicken Seek Kebab Roll',150,'nonveg'), D('Creamy Chicken Roll',170,'nonveg',{bestseller:true}), D('Chicken Garlic Egg Roll',170,'nonveg'), D('Crispy Spicy Chicken Roll',170,'nonveg'), D('Non-Veg Combo Roll',170,'nonveg')]
     }
   };
 
@@ -596,32 +766,36 @@
     {badge:'Veg Special', name:'Veg. Manchurian + Garlic Rice', items:['Veg Manchurian','Garlic Rice'], price:160},
   ];
 
-  const CAT_ICON = Object.fromEntries(CATS.map(c=>[c.id,c.emoji]));
+  const CAT_ICON = Object.fromEntries(CATS.map(c=>[c.id,c.icon]));
 
-  // Keyword -> emoji resolver, first match wins
+  // Keyword -> Material Symbols icon resolver, first match wins
   function getDishIcon(name, catId){
     const n = name.toLowerCase();
-    if(n.includes('fish')) return '🐟';
-    if(n.includes('chicken')) return '🍗';
-    if(n.includes('egg')) return '🥚';
-    if(n.includes('paneer')) return '🧀';
-    if(n.includes('soya chaap') || n.includes('chaap')) return '🍢';
-    if(n.includes('kebab')) return '🍢';
-    if(n.includes('potato')) return '🥔';
-    if(n.includes('gobhi') || n.includes('cauliflower')) return '🥦';
-    if(n.includes('corn')) return '🌽';
-    if(n.includes('manchurian')) return '🧆';
-    if(n.includes('momo')) return '🥟';
-    if(n.includes('soup')) return '🍲';
-    if(n.includes('rice') || n.includes('biryani')) return '🍚';
-    if(n.includes('noodle') || n.includes('hakka') || n.includes('singapuri')) return '🍜';
-    if(n.includes('roll')) return '🌯';
-    if(n.includes('burger')) return '🍔';
-    if(n.includes('chopsuey')) return '🥡';
-    if(n.includes('gravy') || n.includes('sauce')) return '🥘';
-    if(n.includes('spring roll') || n.includes('french fry')) return '🍟';
-    if(n.includes('mix veg')) return '🥬';
-    return CAT_ICON[catId] || '🍽️';
+    if(n.includes('fish')) return 'set_meal';
+    if(n.includes('chicken')) return 'kebab_dining';
+    if(n.includes('egg')) return 'egg_alt';
+    if(n.includes('paneer')) return 'brunch_dining';
+    if(n.includes('soya chaap') || n.includes('chaap')) return 'kebab_dining';
+    if(n.includes('kebab')) return 'kebab_dining';
+    if(n.includes('potato')) return 'nutrition';
+    if(n.includes('gobhi') || n.includes('cauliflower')) return 'nutrition';
+    if(n.includes('corn')) return 'nutrition';
+    if(n.includes('manchurian')) return 'ramen_dining';
+    if(n.includes('momo')) return 'dinner_dining';
+    if(n.includes('soup')) return 'soup_kitchen';
+    if(n.includes('rice') || n.includes('biryani')) return 'rice_bowl';
+    if(n.includes('noodle') || n.includes('hakka') || n.includes('singap')) return 'ramen_dining';
+    if(n.includes('roll')) return 'kebab_dining';
+    if(n.includes('burger')) return 'lunch_dining';
+    if(n.includes('chopsuey')) return 'takeout_dining';
+    if(n.includes('gravy') || n.includes('sauce')) return 'dinner_dining';
+    if(n.includes('spring roll') || n.includes('french fr')) return 'fastfood';
+    if(n.includes('mix veg')) return 'nutrition';
+    return CAT_ICON[catId] || 'restaurant';
+  }
+
+  function iconSpan(name, catId){
+    return `<span class="material-symbols-outlined icon">${getDishIcon(name, catId)}</span>`;
   }
 
   // ---------------- RENDER ----------------
@@ -630,7 +804,22 @@
   const bsRail = document.getElementById('bsRail');
   const comboRail = document.getElementById('comboRail');
 
-  catNav.innerHTML = CATS.map(c => `<div class="cat-chip" data-cat="${c.id}"><span class="emoji">${c.emoji}</span><span class="lbl">${c.label}</span></div>`).join('');
+  catNav.innerHTML = CATS.map(c => `<div class="cat-chip" data-cat="${c.id}"><span class="material-symbols-outlined icon">${c.icon}</span><span class="lbl">${c.label}</span></div>`).join('');
+
+  function priceHTML(d){
+    if(d.price1 !== undefined){
+      const p1 = d.price1 ? `₹${d.price1}` : '—';
+      return `<div class="dish-price dual">
+        <div class="price-row"><span class="price-label">${d.labels[0]}</span><span class="price-val">${p1}</span></div>
+        <div class="price-row"><span class="price-label">${d.labels[1]}</span><span class="price-val">₹${d.price2}</span></div>
+      </div>`;
+    }
+    return `<div class="dish-price">₹${d.price}</div>`;
+  }
+
+  function compactPrice(d){
+    return d.price1 !== undefined ? `₹${d.price1} / ₹${d.price2}` : `₹${d.price}`;
+  }
 
   function dishCardHTML(d, catId){
     const dietDot = d.diet === 'veg' ? '<span class="veg-dot"></span>' : '<span class="nonveg-dot"></span>';
@@ -639,13 +828,14 @@
     if(d.bestseller) badges += `<span class="badge bestseller">🔥 Best Seller</span>`;
     if(d.spicy) badges += `<span class="badge spicy">🌶 Spicy</span>`;
     if(d.chef) badges += `<span class="badge chef">👨‍🍳 Chef Spl.</span>`;
+    if(d.new) badges += `<span class="badge new">✨ New</span>`;
     return `<div class="dish-card" data-name="${d.name.toLowerCase()}" data-diet="${d.diet}" data-best="${d.bestseller?1:0}" data-cat="${catId}">
-      <div class="dish-thumb ${thumbBorder}">${getDishIcon(d.name, catId)}</div>
+      <div class="dish-thumb ${thumbBorder}">${iconSpan(d.name, catId)}</div>
       <div class="dish-info">
         <div class="top-line">${dietDot}<span class="dish-name">${d.name}</span></div>
         ${badges ? `<div class="top-line" style="margin-top:4px;">${badges}</div>` : ''}
       </div>
-      <div class="dish-price">₹${d.price}</div>
+      ${priceHTML(d)}
     </div>`;
   }
 
@@ -657,7 +847,7 @@
   menuSections.innerHTML = CATS.map(c => {
     const data = MENU[c.id] || {};
     return `<section class="section" id="cat-${c.id}">
-      <div class="section-head"><h3><span class="plaque-tag">${c.emoji} ${c.label}</span></h3></div>
+      <div class="section-head"><h3><span class="plaque-tag"><span class="material-symbols-outlined icon">${c.icon}</span>${c.label}</span></h3></div>
       ${groupHTML(data.veg, c.id, 'Veg', '')}
       ${groupHTML(data.nonveg, c.id, 'Non-Veg', 'non')}
     </section>`;
@@ -671,9 +861,9 @@
   });
   bsRail.innerHTML = bestsellers.map(d => `<div class="bs-card">
     <div class="fire-tag">🔥 TRENDING</div>
-    <div class="bs-icon">${getDishIcon(d.name, d.cat)}</div>
+    <div class="bs-icon">${iconSpan(d.name, d.cat)}</div>
     <div class="bs-name">${d.name}</div>
-    <div class="bs-price">₹${d.price}</div>
+    <div class="bs-price">${compactPrice(d)}</div>
   </div>`).join('');
 
   // Combo rail
